@@ -53,7 +53,7 @@ async function fetchRss(
       title: item.title!,
       pubDate: new Date(item.pubDate!),
       link: item.link!,
-      content: item.content!.slice(0, 200),
+      content: item.content!.slice(0, 100),
       source: source,
     }
   })

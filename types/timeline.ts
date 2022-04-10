@@ -14,7 +14,7 @@ export interface Article {
 }
 
 export const SourceSite = {
-  YutasBlog: 'YutasBlog',
+  YutasBlog: "Yuta'sBlog",
   Zenn: 'Zenn',
   Qiita: 'Qiita',
 } as const
