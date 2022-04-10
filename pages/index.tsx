@@ -49,9 +49,14 @@ const Home: NextPage<Props> = ({ timeline }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>🤓 💻 🍛 🍣 🐑</h1>
+        <p className={styles.name}>Yuta Hayashi</p>
+        <p className={styles.description}>
+          いろいろなことに関心があるWeb Engineerです。
+          <br />
+          最近はFlutterでアプリを開発したり3Dを触ってみたりしています。
+        </p>
 
-        <p className={styles.description}>Web Engineer...?</p>
-
+        <p className={styles.name}>Timeline</p>
         {timeline.articles.map((article) => {
           return <TimeLineItem key={article.id} article={article} />
         })}

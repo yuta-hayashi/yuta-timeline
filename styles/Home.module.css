@@ -22,11 +22,24 @@
 }
 
 .title {
-  font-size: 5rem;
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 500px) {
+  .title {
+    font-size: 5rem;
+  }
+}
+
+.name {
+  font-size: 1.5rem;
+  color: #24292f;
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin: 0 0 3rem 0;
+  color: #24292f;
 }
 
 .card {
