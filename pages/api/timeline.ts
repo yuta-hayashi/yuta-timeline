@@ -27,13 +27,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<TimeLine>
 ) {
+  const response = await getTimeline()
+  res.status(200).json(response)
+}
+
+export async function getTimeline(): Promise<TimeLine> {
   let articles: Article[] = []
   for await (const rss of RSSList) {
     const siteArticles = await fetchRss(rss.url, rss.source)
     articles.push.apply(articles, siteArticles)
   }
-  articles.sort((a, b) => (a.pubDate > b.pubDate ? -1 : 1))
-  res.status(200).json({ articles: articles })
+  articles.sort((a, b) => (new Date(a.pubDate) > new Date(b.pubDate) ? -1 : 1))
+  return { articles: articles }
 }
 
 async function fetchRss(
@@ -51,7 +56,7 @@ async function fetchRss(
         .update(item.pubDate! + item.title)
         .digest('hex'),
       title: item.title!,
-      pubDate: new Date(item.pubDate!),
+      pubDate: item.pubDate!,
       link: item.link!,
       content: item.content!.slice(0, 100),
       source: source,

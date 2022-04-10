@@ -2,8 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { config } from '../config'
 import { TimeLine, Article } from '../types/timeline'
+import { getTimeline } from './api/timeline'
 import dayjs from 'dayjs'
 import styles from '../styles/Home.module.css'
+import { time } from 'console'
 
 interface Props {
   timeline: TimeLine
@@ -70,8 +72,7 @@ const Home: NextPage<Props> = ({ timeline }) => {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${config.siteRood}/api/timeline`)
-  const timeline = await res.json()
+  const timeline = await getTimeline()
   return {
     props: {
       timeline: timeline,

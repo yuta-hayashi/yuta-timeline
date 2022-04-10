@@ -7,7 +7,7 @@ export interface TimeLine {
 export interface Article {
   id: string
   title: string
-  pubDate: Date
+  pubDate: string
   link: string
   content: string
   source: SourceSiteType
